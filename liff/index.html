@@ -71,10 +71,18 @@
     }
 
     function getContext() {
+      
+      if (liff.getContext() != null) {
+        document.getElementById("type").append(liff.getContext().type)
+        document.getElementById("viewType").append(liff.getContext().viewType)
+        document.getElementById("utouId").append(liff.getContext().utouId)
+        document.getElementById("roomId").append(liff.getContext().roomId)
+        document.getElementById("groupId").append(liff.getContext().groupId)
+      }
     }
 
     async function getUserProfile() {
-      const profile = await  liff.getProfile()
+      const profile = await liff.getProfile()
       document.getElementById("pictureUrl").src = profile.pictureUrl
       document.getElementById("userId").append(profile.userId)
       document.getElementById("statusMessage").append(profile.statusMessage)
@@ -103,7 +111,7 @@
       await liff.init({ liffId: "1657870249-JpW8RGk0" })
       getEnvironment()
       getUserProfile()
-      // getContext()
+      getContext()
       // getFriendship()
       // createUniversalLink()
     }
