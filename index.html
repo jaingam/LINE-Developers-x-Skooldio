@@ -87,7 +87,7 @@
         document.getElementById("viewType").append(liff.getContext().viewType)
         document.getElementById("utouId").append(liff.getContext().utouId)
         document.getElementById("roomId").append(liff.getContext().roomId)
-        document.getElementById("groupId").append(liff.getContext().groupId)
+        document.getElementById("groupId").append(liff.getContext().groupId) 
       }
     }
 
@@ -113,11 +113,16 @@
     async function main() {
       alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "1657870249-JpW8RGk0" })
-      getEnvironment()
-      getUserProfile()
-      getContext()
-      // getFriendship()
-      // createUniversalLink()
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+        if (liff.isLoggedIn()) {
+          getEnvironment()
+          getUserProfile()
+          getContext()
+        //  getFriendship()
+        //  createUniversalLink()
+        } else {
+          liff.login()
+        }
     }
     main()
   </script>
